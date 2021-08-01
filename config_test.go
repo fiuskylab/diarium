@@ -33,6 +33,15 @@ func getConfigTests() (tts []testCases) {
 		})
 	}
 
+	{
+		tts = append(tts, testCases{
+			name: "NewConfig",
+			want: &Config{
+				AllowedLevels: []level{Emergency, Alert},
+			},
+			got: NewConfig().setLevels(Emergency, Alert),
+		})
+	}
 	return tts
 }
 
