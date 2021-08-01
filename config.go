@@ -44,3 +44,9 @@ func (c *Config) setLevels(lvls ...level) *Config {
 	c.AllowedLevels = lvls
 	return c
 }
+
+// addOutput append a new output into config Outputs
+func (c *Config) addOutput(o Output) *Config {
+	c.Outputs = append(c.Outputs, o)
+	return c
+}
