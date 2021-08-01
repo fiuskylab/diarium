@@ -17,6 +17,9 @@ func getConfigTests() (tts []testCases) {
 					Info,
 					Debug,
 				},
+				Outputs: []Output{
+					newTerminal(),
+				},
 			},
 			got: NewDefaultConfig(),
 		})

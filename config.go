@@ -4,6 +4,7 @@ package diarium
 // diarium logging tool
 type Config struct {
 	AllowedLevels []level
+	Outputs []Output
 }
 
 // NewDefaultConfig returns a Config
@@ -19,6 +20,9 @@ func NewDefaultConfig() *Config {
 			Notice,
 			Info,
 			Debug,
+		},
+		Outputs: []Output{
+			newTerminal(),
 		},
 	}
 }
