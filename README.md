@@ -1,0 +1,2 @@
+# diarium
+Go logging package
