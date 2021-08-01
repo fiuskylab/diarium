@@ -10,6 +10,14 @@ func getClientTests() (tts []testCases) {
 			got:  NewDefaultClient(),
 		})
 	}
+	{
+		cfg := NewDefaultConfig()
+		tts = append(tts, testCases{
+			name: "NewClient",
+			want: &Client{cfg: cfg},
+			got:  NewClient(cfg),
+		})
+	}
 	return tts
 }
 
