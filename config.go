@@ -26,3 +26,6 @@ func NewDefaultConfig() *Config {
 		},
 	}
 }
+func NewConfig() *Config {
+	return &Config{}
+}

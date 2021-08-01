@@ -24,6 +24,15 @@ func getConfigTests() (tts []testCases) {
 			got: NewDefaultConfig(),
 		})
 	}
+
+	{
+		tts = append(tts, testCases{
+			name: "NewConfig",
+			want: &Config{},
+			got:  NewConfig(),
+		})
+	}
+
 	return tts
 }
 
