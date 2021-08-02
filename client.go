@@ -19,3 +19,15 @@ func NewClient(cfg *Config) *Client {
 		cfg: cfg,
 	}
 }
+
+// Log prints a given interface through all
+// configured outputs
+func (c *Client) Log(i interface{}) error {
+	for _, o := range c.cfg.Outputs {
+		err := o.output(i)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
