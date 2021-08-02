@@ -12,6 +12,12 @@ type testCases struct {
 	got  interface{}
 }
 
+var testInterface = struct {
+	name string `json:name`
+}{
+	name: "Foo",
+}
+
 func runTests(t *testing.T, tts []testCases) {
 	for _, tt := range tts {
 		t.Run(tt.name, func(t *testing.T) {

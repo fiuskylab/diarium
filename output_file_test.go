@@ -6,12 +6,6 @@ import (
 )
 
 func getFileTests() (tts []testCases) {
-	testInterface := struct {
-		name string `json:name`
-	}{
-		name: "Foo",
-	}
-
 	{
 		w, _ := os.OpenFile("tmp/output_file_test", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 		defer w.Close()
