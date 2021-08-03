@@ -1,24 +1,29 @@
 package diarium
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/fiuskylab/diarium/consts"
+	"github.com/fiuskylab/diarium/outputs"
+)
 
 func getConfigTests() (tts []testCases) {
 	{
 		tts = append(tts, testCases{
 			name: "NewDefaultConfig",
 			want: &Config{
-				AllowedLevels: []level{
-					Emergency,
-					Critical,
-					Alert,
-					Error,
-					Warning,
-					Notice,
-					Info,
-					Debug,
+				AllowedLevels: []consts.Level{
+					consts.Emergency,
+					consts.Critical,
+					consts.Alert,
+					consts.Error,
+					consts.Warning,
+					consts.Notice,
+					consts.Info,
+					consts.Debug,
 				},
-				Outputs: []Output{
-					newTerminal(),
+				Outputs: []outputs.Output{
+					outputs.NewTerminal(),
 				},
 			},
 			got: NewDefaultConfig(),
@@ -37,9 +42,9 @@ func getConfigTests() (tts []testCases) {
 		tts = append(tts, testCases{
 			name: "Config.setLevels",
 			want: &Config{
-				AllowedLevels: []level{Emergency, Alert},
+				AllowedLevels: []consts.Level{consts.Emergency, consts.Alert},
 			},
-			got: NewConfig().setLevels(Emergency, Alert),
+			got: NewConfig().setLevels(consts.Emergency, consts.Alert),
 		})
 	}
 
@@ -47,9 +52,9 @@ func getConfigTests() (tts []testCases) {
 		tts = append(tts, testCases{
 			name: "Config.addOutput",
 			want: &Config{
-				Outputs: []Output{Output(newTerminal())},
+				Outputs: []outputs.Output{outputs.Output(outputs.NewTerminal())},
 			},
-			got: NewConfig().addOutput(Output(newTerminal())),
+			got: NewConfig().addOutput(outputs.Output(outputs.NewTerminal())),
 		})
 	}
 	return tts

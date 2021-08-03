@@ -1,4 +1,4 @@
-package diarium
+package consts
 
 import "testing"
 

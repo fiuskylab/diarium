@@ -1,10 +1,10 @@
-package diarium
+package consts
 
-type level int
+type Level int
 
 const (
 	// Emergency - Unusable conditions
-	Emergency level = iota
+	Emergency Level = iota
 	// Alert - A condition that a action
 	// must be taken immediatly
 	Alert
@@ -27,7 +27,7 @@ const (
 	Debug
 )
 
-var mapLevel = map[level]string{
+var mapLevel = map[Level]string{
 	Emergency: "Emergency",
 	Critical:  "Critical",
 	Alert:     "Alert",
@@ -46,12 +46,12 @@ type enum interface {
 }
 
 // String return Level as string
-func (l level) toString() string {
+func (l Level) toString() string {
 	return mapLevel[l]
 }
 
 // Index return Level's index(int) value
-func (l level) toIndex() int {
+func (l Level) toIndex() int {
 	return int(l)
 }
 

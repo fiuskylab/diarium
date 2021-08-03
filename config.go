@@ -1,14 +1,19 @@
 package diarium
 
+import (
+	"github.com/fiuskylab/diarium/consts"
+	"github.com/fiuskylab/diarium/outputs"
+)
+
 // Config provides the main settings for
 // diarium logging tool
 type Config struct {
 	// AllowedLevels store all type of logging
 	// that the client is allowed to output
-	AllowedLevels []level
+	AllowedLevels []consts.Level
 	// Outputs store all configured output options
 	// available to Diarium's clients
-	Outputs []Output
+	Outputs []outputs.Output
 }
 
 // NewDefaultConfig returns a Config
@@ -18,18 +23,18 @@ type Config struct {
 // 		- 1 Output (terminal)
 func NewDefaultConfig() *Config {
 	return &Config{
-		AllowedLevels: []level{
-			Emergency,
-			Critical,
-			Alert,
-			Error,
-			Warning,
-			Notice,
-			Info,
-			Debug,
+		AllowedLevels: []consts.Level{
+			consts.Emergency,
+			consts.Critical,
+			consts.Alert,
+			consts.Error,
+			consts.Warning,
+			consts.Notice,
+			consts.Info,
+			consts.Debug,
 		},
-		Outputs: []Output{
-			newTerminal(),
+		Outputs: []outputs.Output{
+			outputs.NewTerminal(),
 		},
 	}
 }
@@ -40,13 +45,13 @@ func NewConfig() *Config {
 }
 
 // setLevels overwrites AllowedLevels field
-func (c *Config) setLevels(lvls ...level) *Config {
+func (c *Config) setLevels(lvls ...consts.Level) *Config {
 	c.AllowedLevels = lvls
 	return c
 }
 
 // addOutput append a new output into config Outputs
-func (c *Config) addOutput(o Output) *Config {
+func (c *Config) addOutput(o outputs.Output) *Config {
 	c.Outputs = append(c.Outputs, o)
 	return c
 }

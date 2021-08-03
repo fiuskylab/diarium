@@ -1,4 +1,4 @@
-package diarium
+package outputs
 
 import (
 	"os"
@@ -14,14 +14,14 @@ func getFileTests() (tts []testCases) {
 			want: Output(&file{
 				w: w,
 			}),
-			got: newFile(w),
+			got: NewFile(w),
 		})
 	}
 
 	{
 		w, _ := os.OpenFile("tmp/output_file_test", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 		defer w.Close()
-		l := newFile(w)
+		l := NewFile(w)
 		tts = append(tts, testCases{
 			name: "output",
 			want: nil,

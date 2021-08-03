@@ -1,4 +1,4 @@
-package diarium
+package outputs
 
 import "testing"
 
@@ -13,12 +13,12 @@ func getTerminalTests() (tts []testCases) {
 		tts = append(tts, testCases{
 			name: "newTerminal",
 			want: Output(&terminal{}),
-			got:  newTerminal(),
+			got:  NewTerminal(),
 		})
 	}
 
 	{
-		t := newTerminal()
+		t := NewTerminal()
 		tts = append(tts, testCases{
 			name: "output",
 			want: nil,
