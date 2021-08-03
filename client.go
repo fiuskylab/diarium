@@ -1,7 +1,5 @@
 package diarium
 
-import "github.com/fiuskylab/diarium/outputs"
-
 type Client struct {
 	cfg *Config
 }
@@ -26,7 +24,7 @@ func NewClient(cfg *Config) *Client {
 // configured outputs
 func (c *Client) Log(i interface{}) error {
 	for _, o := range c.cfg.Outputs {
-		err := outputs.Print(o, i)
+		err := o.output(i)
 		if err != nil {
 			return err
 		}

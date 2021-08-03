@@ -1,4 +1,4 @@
-package outputs
+package diarium
 
 import (
 	"encoding/json"
@@ -20,7 +20,7 @@ func (f *file) output(i interface{}) error {
 
 // newTerminal add the output option to print
 // logs into given file
-func NewFile(w *os.File) Output {
+func newFile(w *os.File) Output {
 	return Output(&file{
 		w: w,
 	})

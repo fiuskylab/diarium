@@ -1,4 +1,4 @@
-package outputs
+package diarium
 
 import (
 	"os"
@@ -13,12 +13,12 @@ func getOutputTests() (tts []testCases) {
 	}
 
 	w, _ := os.OpenFile("tmp/outputs_test", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	f := NewFile(w)
+	f := newFile(w)
 	{
 		tts = append(tts, testCases{
 			name: "output",
 			want: nil,
-			got:  Print(f, testInterface),
+			got:  output(f, testInterface),
 		})
 	}
 

@@ -3,8 +3,6 @@ package diarium
 import (
 	"os"
 	"testing"
-
-	"github.com/fiuskylab/diarium/outputs"
 )
 
 func getClientTests() (tts []testCases) {
@@ -26,7 +24,7 @@ func getClientTests() (tts []testCases) {
 	{
 		w, _ := os.OpenFile("tmp/client_test", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 		defer w.Close()
-		f := outputs.NewFile(w)
+		f := newFile(w)
 		client := NewClient(NewDefaultConfig().addOutput(f))
 		tts = append(tts, testCases{
 			name: "NewClient",
@@ -37,7 +35,7 @@ func getClientTests() (tts []testCases) {
 	{
 		w, _ := os.OpenFile("tmp/client_test_closed", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 		w.Close()
-		f := outputs.NewFile(w)
+		f := newFile(w)
 		client := NewClient(NewDefaultConfig().addOutput(f))
 		tts = append(tts, testCases{
 			name: "NewClient",
