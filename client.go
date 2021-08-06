@@ -25,9 +25,9 @@ func NewClient(cfg *Config) *Client {
 
 // Log prints a given interface through all
 // configured outputs
-func (c *Client) Log(lvl, message string, extra map[string]string) error {
+func (c *Client) Log(lvl level, message string, extra map[string]string) error {
 	for _, o := range c.cfg.Outputs {
-		err := o.output(newLogBody(lvl, message, extra))
+		err := o.output(newLogBody(lvl.toString(), message, extra))
 		if err != nil {
 			return err
 		}
