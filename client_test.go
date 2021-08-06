@@ -31,7 +31,7 @@ func getClientTests() (tts []testCases) {
 		tts = append(tts, testCases{
 			name:     "NewClient",
 			want:     nil,
-			got:      client.Log(testInterface),
+			got:      client.Log(Warning.toString(), "Foo Bar", nil),
 			testType: Equal,
 		})
 	}
@@ -43,7 +43,7 @@ func getClientTests() (tts []testCases) {
 		tts = append(tts, testCases{
 			name:     "NewClient",
 			want:     "write tmp/client_test_closed: file already closed",
-			got:      client.Log(testInterface).Error(),
+			got:      client.Log(Warning.toString(), "Foo Bar", nil).Error(),
 			testType: Equal,
 		})
 	}
