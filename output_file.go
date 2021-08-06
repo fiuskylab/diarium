@@ -12,7 +12,7 @@ type file struct {
 }
 
 // output writes given log into file
-func (f *file) output(i interface{}) error {
+func (f *file) output(i LogBody) error {
 	b, _ := json.Marshal(i)
 	_, err := fmt.Fprintln(f.w, string(b))
 	return err

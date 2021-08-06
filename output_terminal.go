@@ -10,7 +10,7 @@ type terminal struct {
 }
 
 // output prints given log into terminal's buffer
-func (f *terminal) output(i interface{}) error {
+func (f *terminal) output(i LogBody) error {
 	b, _ := json.Marshal(i)
 	fmt.Println(string(b))
 

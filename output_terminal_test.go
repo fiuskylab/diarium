@@ -3,12 +3,6 @@ package diarium
 import "testing"
 
 func getTerminalTests() (tts []testCases) {
-	testInterface := struct {
-		Name string `json:"name"`
-	}{
-		Name: "Foo",
-	}
-
 	{
 		tts = append(tts, testCases{
 			name:     "newTerminal",

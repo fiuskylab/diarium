@@ -23,11 +23,7 @@ type testCases struct {
 	testType  TestType
 }
 
-var testInterface = struct {
-	Name string `json:"name"`
-}{
-	Name: "Foo",
-}
+var testInterface = newLogBody(Warning.toString(), "Foo Bar", nil)
 
 func runTests(t *testing.T, tts []testCases) {
 	for _, tt := range tts {
