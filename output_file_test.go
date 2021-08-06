@@ -14,7 +14,8 @@ func getFileTests() (tts []testCases) {
 			want: Output(&file{
 				w: w,
 			}),
-			got: newFile(w),
+			got:      newFile(w),
+			testType: Equal,
 		})
 	}
 
@@ -23,9 +24,9 @@ func getFileTests() (tts []testCases) {
 		defer w.Close()
 		l := newFile(w)
 		tts = append(tts, testCases{
-			name: "output",
-			want: nil,
-			got:  l.output(testInterface),
+			name:     "output",
+			got:      l.output(testInterface),
+			testType: Nil,
 		})
 	}
 

@@ -36,15 +36,11 @@ func runTests(t *testing.T, tts []testCases) {
 			switch tt.testType {
 			case Equal:
 				assert.Equal(t, tt.want, tt.got)
-				break
 			case Regex:
 				assert.Regexp(t, tt.regexRule, tt.got)
-				break
 			case Nil:
 				assert.Nil(t, tt.got)
-				break
 			default:
-				break
 			}
 		})
 	}

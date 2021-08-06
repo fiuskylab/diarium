@@ -7,18 +7,18 @@ import (
 
 func getOutputTests() (tts []testCases) {
 	testInterface := struct {
-		name string `json:name`
+		Name string `json:"name"`
 	}{
-		name: "Foo",
+		Name: "Foo",
 	}
 
 	w, _ := os.OpenFile("tmp/outputs_test", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	f := newFile(w)
 	{
 		tts = append(tts, testCases{
-			name: "output",
-			want: nil,
-			got:  output(f, testInterface),
+			name:     "output",
+			got:      output(f, testInterface),
+			testType: Nil,
 		})
 	}
 

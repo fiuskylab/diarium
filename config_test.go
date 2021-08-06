@@ -21,15 +21,17 @@ func getConfigTests() (tts []testCases) {
 					newTerminal(),
 				},
 			},
-			got: NewDefaultConfig(),
+			got:      NewDefaultConfig(),
+			testType: Equal,
 		})
 	}
 
 	{
 		tts = append(tts, testCases{
-			name: "NewConfig",
-			want: &Config{},
-			got:  NewConfig(),
+			name:     "NewConfig",
+			want:     &Config{},
+			got:      NewConfig(),
+			testType: Equal,
 		})
 	}
 
@@ -39,7 +41,8 @@ func getConfigTests() (tts []testCases) {
 			want: &Config{
 				AllowedLevels: []level{Emergency, Alert},
 			},
-			got: NewConfig().setLevels(Emergency, Alert),
+			got:      NewConfig().setLevels(Emergency, Alert),
+			testType: Equal,
 		})
 	}
 
@@ -49,7 +52,8 @@ func getConfigTests() (tts []testCases) {
 			want: &Config{
 				Outputs: []Output{Output(newTerminal())},
 			},
-			got: NewConfig().addOutput(Output(newTerminal())),
+			got:      NewConfig().addOutput(Output(newTerminal())),
+			testType: Equal,
 		})
 	}
 	return tts

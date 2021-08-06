@@ -8,17 +8,19 @@ import (
 func getClientTests() (tts []testCases) {
 	{
 		tts = append(tts, testCases{
-			name: "NewDefaultClient",
-			want: &Client{},
-			got:  NewDefaultClient(),
+			name:     "NewDefaultClient",
+			want:     &Client{},
+			got:      NewDefaultClient(),
+			testType: Equal,
 		})
 	}
 	{
 		cfg := NewDefaultConfig()
 		tts = append(tts, testCases{
-			name: "NewClient",
-			want: &Client{cfg: cfg},
-			got:  NewClient(cfg),
+			name:     "NewClient",
+			want:     &Client{cfg: cfg},
+			got:      NewClient(cfg),
+			testType: Equal,
 		})
 	}
 	{
@@ -27,9 +29,10 @@ func getClientTests() (tts []testCases) {
 		f := newFile(w)
 		client := NewClient(NewDefaultConfig().addOutput(f))
 		tts = append(tts, testCases{
-			name: "NewClient",
-			want: nil,
-			got:  client.Log(testInterface),
+			name:     "NewClient",
+			want:     nil,
+			got:      client.Log(testInterface),
+			testType: Equal,
 		})
 	}
 	{
@@ -38,9 +41,10 @@ func getClientTests() (tts []testCases) {
 		f := newFile(w)
 		client := NewClient(NewDefaultConfig().addOutput(f))
 		tts = append(tts, testCases{
-			name: "NewClient",
-			want: "write tmp/client_test_closed: file already closed",
-			got:  client.Log(testInterface).Error(),
+			name:     "NewClient",
+			want:     "write tmp/client_test_closed: file already closed",
+			got:      client.Log(testInterface).Error(),
+			testType: Equal,
 		})
 	}
 	return tts
