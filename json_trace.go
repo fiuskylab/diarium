@@ -8,17 +8,20 @@ type trace struct {
 	ScopeName string `json:"scope_name"`
 }
 
-// TRACESKIP - a
-const TRACESKIP = 2
+// TRACERUNTIME - a
+const TRACERUNTIME = 2
+
+// TRACESCOPE
+const TRACESCOPE = 0
 
 func getTrace() trace {
 	pc := make([]uintptr, 1)
 
-	runtime.Callers(TRACESKIP, pc)
+	runtime.Callers(TRACESCOPE, pc)
 
 	f := runtime.FuncForPC(pc[0])
 
-	_, filename, line, _ := runtime.Caller(TRACESKIP)
+	_, filename, line, _ := runtime.Caller(TRACERUNTIME)
 
 	return trace{
 		ScopeName: f.Name(),
