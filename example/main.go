@@ -1,8 +1,3 @@
-# diarium
-Go logging package
-
-## Example
-```golang
 package main
 
 import (
@@ -21,4 +16,3 @@ func main() {
 		// handles error
 	}
 }
-```
