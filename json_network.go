@@ -5,11 +5,17 @@ import (
 	"os"
 )
 
+// network stores the app execution data
+// related to network connection
 type network struct {
-	IP       string `json:"ip"`
+	// IP is the machine IP
+	IP string `json:"ip"`
+	// Hostname is the machine's name
 	Hostname string `json:"hostname"`
 }
 
+// getNetwork generate a network struct
+// with filled fields
 func getNetwork() network {
 	hostname, _ := os.Hostname()
 	return network{

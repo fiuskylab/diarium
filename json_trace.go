@@ -2,16 +2,24 @@ package diarium
 
 import "runtime"
 
+// trace stores the app execution data
+// related to files
 type trace struct {
-	Filename  string `json:"filename"`
-	Line      int    `json:"line"`
+	// Filename the name of the file
+	Filename string `json:"filename"`
+	// Line in which line the log was called
+	Line int `json:"line"`
+	// ScopeName name of the function that
+	// the log was called
 	ScopeName string `json:"scope_name"`
 }
 
-// TRACERUNTIME - a
+// TRACERUNTIME - Define the trace depth
+// into runtime.Callers
 const TRACERUNTIME = 2
 
-// TRACESCOPE
+// TRACESCOPE - Define the trace depth
+// into runtime.Callers
 const TRACESCOPE = 0
 
 func getTrace() trace {
